@@ -9,10 +9,10 @@ data = {
 
 df = pd.DataFrame(data)
 
-subject_columns = ["Math", "Science", "English"]
+subjects = ["Math", "Science", "English"]
 
-df["Average"] = df[subject_columns].mean(axis=1)
-df["Total"] = df[subject_columns].sum(axis=1)
+df["Average"] = df[subjects].mean(axis=1)
+df["Total"] = df[subjects].sum(axis=1)
 df["Passed"] = df["Average"] >= 60
 
 print("DataFrame with Average, Total and Passed columns:")

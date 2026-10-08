@@ -14,11 +14,9 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Separate the input features and target.
 X = df.drop("Purchased", axis=1)
 y = df["Purchased"]
 
-# Convert the City values into numeric one-hot columns.
 X = pd.get_dummies(X, columns=["City"], dtype=int)
 
 X = X.to_numpy(dtype=float)
@@ -29,27 +27,24 @@ print("X:", X.shape)
 print("y:", y.shape)
 
 np.random.seed(42)
-shuffled_indices = np.random.permutation(len(X))
+indices = np.random.permutation(len(X))
 
-X = X[shuffled_indices]
-y = y[shuffled_indices]
+X = X[indices]
+y = y[indices]
 
-split_index = int(0.8 * len(X))
+split = int(0.8 * len(X))
 
-X_train = X[:split_index]
-X_test = X[split_index:]
-y_train = y[:split_index]
-y_test = y[split_index:]
+X_train = X[:split]
+X_test = X[split:]
+y_train = y[:split]
+y_test = y[split:]
 
-train_mean = np.mean(X_train, axis=0)
-train_std = np.std(X_train, axis=0)
+mean = np.mean(X_train, axis=0)
+std = np.std(X_train, axis=0)
+std[std == 0] = 1
 
-# A standard deviation of 0 cannot be used as a divisor.
-# Replacing it with 1 keeps a constant feature unchanged after centering.
-train_std = np.where(train_std == 0, 1, train_std)
-
-X_train = (X_train - train_mean) / train_std
-X_test = (X_test - train_mean) / train_std
+X_train_scaled = (X_train - mean) / std
+X_test_scaled = (X_test - mean) / std
 
 print("\nTraining and testing shapes:")
 print("X_train.shape:", X_train.shape)
@@ -58,10 +53,10 @@ print("y_train.shape:", y_train.shape)
 print("y_test.shape:", y_test.shape)
 
 print("\nFinal X_train array:")
-print(X_train)
+print(X_train_scaled)
 
 print("\nFinal X_test array:")
-print(X_test)
+print(X_test_scaled)
 
 print("\nFinal y_train array:")
 print(y_train)
