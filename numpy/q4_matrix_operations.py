@@ -10,32 +10,29 @@ X = np.array([
 
 y = np.array([3, 5, 7, 9, 11])
 
-# Add a column of ones as the bias column.
-X = np.column_stack((np.ones(X.shape[0]), X))
+X_bias = np.column_stack((np.ones(X.shape[0]), X))
 
 print("X with bias column:")
-print(X)
+print(X_bias)
 
-X_transpose_X = X.T @ X
-X_transpose_y = X.T @ y
+XTX = X_bias.T @ X_bias
+XTy = X_bias.T @ y
 
 print("\nX.T @ X:")
-print(X_transpose_X)
+print(XTX)
 
 print("\nX.T @ y:")
-print(X_transpose_y)
+print(XTy)
 
-# The given columns are linearly dependent, so X.T @ X is singular.
-# The pseudoinverse is the correct NumPy alternative in this case.
-weights = np.linalg.pinv(X_transpose_X) @ X_transpose_y
-predictions = X @ weights
-mse = np.mean((y - predictions) ** 2)
+w = np.linalg.pinv(XTX) @ XTy
+y_pred = X_bias @ w
+mse = np.mean((y - y_pred) ** 2)
 
 print("\nWeights:")
-print(weights)
+print(w)
 
 print("\nPredictions:")
-print(predictions)
+print(y_pred)
 
 print("\nMSE:")
 print(mse)

@@ -20,13 +20,12 @@ print(X[:2])
 print("\nLast two columns:")
 print(X[:, -2:])
 
-X_modified = X.copy()
-X_modified[X_modified > 80] = 0
+X[X > 80] = 0
 
 print("\nAfter replacing values greater than 80 with 0:")
-print(X_modified)
+print(X)
 
-print("\nMinimum of each column:", np.min(X_modified, axis=0))
-print("Maximum of each column:", np.max(X_modified, axis=0))
-print("Mean of each column:", np.mean(X_modified, axis=0))
-print("Standard deviation of each column:", np.std(X_modified, axis=0))
+print("\nMinimum of each column:", np.min(X, axis=0))
+print("Maximum of each column:", np.max(X, axis=0))
+print("Mean of each column:", np.mean(X, axis=0))
+print("Standard deviation of each column:", np.std(X, axis=0))

@@ -15,25 +15,24 @@ X = np.array([
 
 y = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1])
 
-# A fixed seed makes the random shuffle repeatable.
 np.random.seed(42)
-shuffled_indices = np.random.permutation(len(X))
+indices = np.random.permutation(len(X))
 
-X = X[shuffled_indices]
-y = y[shuffled_indices]
+X = X[indices]
+y = y[indices]
 
-split_index = int(0.8 * len(X))
+split = int(0.8 * len(X))
 
-X_train = X[:split_index]
-X_test = X[split_index:]
-y_train = y[:split_index]
-y_test = y[split_index:]
+X_train = X[:split]
+X_test = X[split:]
+y_train = y[:split]
+y_test = y[split:]
 
-train_mean = np.mean(X_train, axis=0)
-train_std = np.std(X_train, axis=0)
+mean = np.mean(X_train, axis=0)
+std = np.std(X_train, axis=0)
 
-X_train_scaled = (X_train - train_mean) / train_std
-X_test_scaled = (X_test - train_mean) / train_std
+X_train_scaled = (X_train - mean) / std
+X_test_scaled = (X_test - mean) / std
 
 print("Shapes:")
 print("X_train:", X_train.shape)

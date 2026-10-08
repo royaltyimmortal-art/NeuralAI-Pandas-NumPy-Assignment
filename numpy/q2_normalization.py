@@ -8,18 +8,16 @@ X = np.array([
     [50, 500, 5000]
 ])
 
-# axis=0 calculates each column separately.
-column_mean = np.mean(X, axis=0)
-column_std = np.std(X, axis=0)
+mean = np.mean(X, axis=0)
+std = np.std(X, axis=0)
 
 print("Mean of each column:")
-print(column_mean)
+print(mean)
 
 print("\nStandard deviation of each column:")
-print(column_std)
+print(std)
 
-# NumPy broadcasting applies the column values to every row.
-X_scaled = (X - column_mean) / column_std
+X_scaled = (X - mean) / std
 
 print("\nScaled matrix:")
 print(X_scaled)
