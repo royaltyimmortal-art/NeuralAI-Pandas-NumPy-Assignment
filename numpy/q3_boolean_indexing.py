@@ -9,23 +9,27 @@ X = np.array([
     [31, 70000]
 ])
 
-age_filter = X[:, 0] >= 25
-salary_filter = X[:, 1] > 60000
+# Part 1
+age_mask = X[:, 0] >= 25
+print("Age greater than or equal to 25:")
+print(X[age_mask])
 
-print("People whose age is 25 or more:")
-print(X[age_filter])
+# Part 2
+salary_mask = X[:, 1] > 60000
+print("\nSalary greater than 60000:")
+print(X[salary_mask])
 
-print("\nPeople whose salary is greater than 60000:")
-print(X[salary_filter])
+# Part 3
+print("\nAge >= 25 and salary > 60000:")
+print(X[age_mask & salary_mask])
 
-print("\nPeople aged 25 or more with salary greater than 60000:")
-print(X[age_filter & salary_filter])
-
+# Part 4
 X[X[:, 1] < 30000, 1] = 30000
-
-print("\nAfter replacing salaries below 30000:")
+print("\nAfter replacing low salaries:")
 print(X)
 
-print("\nAverage salary:", X[:, 1].mean())
-print("Average salary for people aged 25 or more:",
-      X[age_filter, 1].mean())
+# Part 5
+print("\nAverage salary:", np.mean(X[:, 1]))
+
+# Part 6
+print("Average salary for age >= 25:", np.mean(X[age_mask, 1]))

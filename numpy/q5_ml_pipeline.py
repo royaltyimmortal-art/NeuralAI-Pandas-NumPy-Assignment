@@ -15,39 +15,37 @@ X = np.array([
 
 y = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1])
 
+# Part 1
 np.random.seed(42)
-indices = np.random.permutation(len(X))
+order = np.random.permutation(len(X))
+X = X[order]
+y = y[order]
 
-X = X[indices]
-y = y[indices]
-
-split = int(len(X) * 0.8)
-
+# Parts 2 and 3
+split = int(0.8 * len(X))
 X_train = X[:split]
 X_test = X[split:]
 y_train = y[:split]
 y_test = y[split:]
 
-train_mean = X_train.mean(axis=0)
-train_std = X_train.std(axis=0)
+# Parts 4 and 5
+mean = np.mean(X_train, axis=0)
+std = np.std(X_train, axis=0)
+X_train_scaled = (X_train - mean) / std
+X_test_scaled = (X_test - mean) / std
 
-X_train_scaled = (X_train - train_mean) / train_std
-X_test_scaled = (X_test - train_mean) / train_std
+# Part 6
+print("X_train shape:", X_train.shape)
+print("X_test shape:", X_test.shape)
+print("y_train shape:", y_train.shape)
+print("y_test shape:", y_test.shape)
 
-print("Shapes:")
-print("X_train:", X_train.shape)
-print("X_test:", X_test.shape)
-print("y_train:", y_train.shape)
-print("y_test:", y_test.shape)
-
-print("\nFirst 3 training samples before scaling:")
+# Part 7
+print("\nBefore scaling:")
 print(X_train[:3])
-
-print("\nFirst 3 training samples after scaling:")
+print("\nAfter scaling:")
 print(X_train_scaled[:3])
 
-print("\nMean of the scaled training features:")
-print(X_train_scaled.mean(axis=0))
-
-print("\nStandard deviation of the scaled training features:")
-print(X_train_scaled.std(axis=0))
+# Part 8
+print("\nTraining mean:", np.mean(X_train_scaled, axis=0))
+print("Training standard deviation:", np.std(X_train_scaled, axis=0))

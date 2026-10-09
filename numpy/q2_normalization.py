@@ -8,22 +8,21 @@ X = np.array([
     [50, 500, 5000]
 ])
 
-mean = X.mean(axis=0)
-std = X.std(axis=0)
+# Part 1
+mean = np.mean(X, axis=0)
+print("Column means:", mean)
 
-print("Mean of each column:")
-print(mean)
+# Part 2
+std = np.std(X, axis=0)
+print("Column standard deviations:", std)
 
-print("\nStandard deviation of each column:")
-print(std)
-
+# Part 3
 X_scaled = (X - mean) / std
 
+# Part 4
 print("\nScaled matrix:")
 print(X_scaled)
 
-print("\nMean of each scaled column:")
-print(X_scaled.mean(axis=0))
-
-print("\nStandard deviation of each scaled column:")
-print(X_scaled.std(axis=0))
+# Part 5
+print("\nScaled column means:", np.mean(X_scaled, axis=0))
+print("Scaled column standard deviations:", np.std(X_scaled, axis=0))
