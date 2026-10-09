@@ -25,7 +25,7 @@ X[X > 80] = 0
 print("\nAfter replacing values greater than 80 with 0:")
 print(X)
 
-print("\nMinimum of each column:", np.min(X, axis=0))
-print("Maximum of each column:", np.max(X, axis=0))
-print("Mean of each column:", np.mean(X, axis=0))
-print("Standard deviation of each column:", np.std(X, axis=0))
+print("\nMinimum of each column:", X.min(axis=0))
+print("Maximum of each column:", X.max(axis=0))
+print("Mean of each column:", X.mean(axis=0))
+print("Standard deviation of each column:", X.std(axis=0))

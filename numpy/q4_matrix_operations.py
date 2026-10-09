@@ -10,13 +10,13 @@ X = np.array([
 
 y = np.array([3, 5, 7, 9, 11])
 
-X_bias = np.column_stack((np.ones(X.shape[0]), X))
+X = np.column_stack((np.ones(X.shape[0]), X))
 
 print("X with bias column:")
-print(X_bias)
+print(X)
 
-XTX = X_bias.T @ X_bias
-XTy = X_bias.T @ y
+XTX = X.T @ X
+XTy = X.T @ y
 
 print("\nX.T @ X:")
 print(XTX)
@@ -25,8 +25,8 @@ print("\nX.T @ y:")
 print(XTy)
 
 w = np.linalg.pinv(XTX) @ XTy
-y_pred = X_bias @ w
-mse = np.mean((y - y_pred) ** 2)
+y_pred = X @ w
+mse = np.sum((y - y_pred) ** 2) / len(y)
 
 print("\nWeights:")
 print(w)

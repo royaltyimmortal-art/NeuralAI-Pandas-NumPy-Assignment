@@ -8,8 +8,8 @@ X = np.array([
     [50, 500, 5000]
 ])
 
-mean = np.mean(X, axis=0)
-std = np.std(X, axis=0)
+mean = X.mean(axis=0)
+std = X.std(axis=0)
 
 print("Mean of each column:")
 print(mean)
@@ -23,7 +23,7 @@ print("\nScaled matrix:")
 print(X_scaled)
 
 print("\nMean of each scaled column:")
-print(np.mean(X_scaled, axis=0))
+print(X_scaled.mean(axis=0))
 
 print("\nStandard deviation of each scaled column:")
-print(np.std(X_scaled, axis=0))
+print(X_scaled.std(axis=0))
