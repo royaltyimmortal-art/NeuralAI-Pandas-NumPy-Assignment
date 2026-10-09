@@ -18,7 +18,7 @@ print(df.tail(2))
 print("\nShape:", df.shape)
 
 print("\nColumn names:")
-print(df.columns)
+print(df.columns.tolist())
 
 print("\nData types:")
 print(df.dtypes)

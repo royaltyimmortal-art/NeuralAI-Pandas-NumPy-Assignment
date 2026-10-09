@@ -26,25 +26,24 @@ print("Original NumPy array shapes:")
 print("X:", X.shape)
 print("y:", y.shape)
 
-np.random.seed(42)
+np.random.seed(0)
 indices = np.random.permutation(len(X))
 
 X = X[indices]
 y = y[indices]
 
-split = int(0.8 * len(X))
+split = int(len(X) * 0.8)
 
 X_train = X[:split]
 X_test = X[split:]
 y_train = y[:split]
 y_test = y[split:]
 
-mean = np.mean(X_train, axis=0)
-std = np.std(X_train, axis=0)
-std[std == 0] = 1
+train_mean = X_train.mean(axis=0)
+train_std = X_train.std(axis=0)
 
-X_train_scaled = (X_train - mean) / std
-X_test_scaled = (X_test - mean) / std
+X_train = (X_train - train_mean) / train_std
+X_test = (X_test - train_mean) / train_std
 
 print("\nTraining and testing shapes:")
 print("X_train.shape:", X_train.shape)
@@ -53,10 +52,10 @@ print("y_train.shape:", y_train.shape)
 print("y_test.shape:", y_test.shape)
 
 print("\nFinal X_train array:")
-print(X_train_scaled)
+print(X_train)
 
 print("\nFinal X_test array:")
-print(X_test_scaled)
+print(X_test)
 
 print("\nFinal y_train array:")
 print(y_train)

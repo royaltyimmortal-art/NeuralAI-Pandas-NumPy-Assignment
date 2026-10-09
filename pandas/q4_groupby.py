@@ -14,7 +14,7 @@ average_salary = department_groups["Salary"].mean()
 maximum_salary = department_groups["Salary"].max()
 minimum_salary = department_groups["Salary"].min()
 average_experience = department_groups["Experience"].mean()
-employee_count = department_groups["Employee"].count()
+employee_count = department_groups.size()
 
 print("Average salary for each department:")
 print(average_salary)

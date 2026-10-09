@@ -13,7 +13,7 @@ print("Original DataFrame:")
 print(df)
 
 print("\nMissing values in each column:")
-print(df.isnull().sum())
+print(df.isna().sum())
 
 df["Age"] = df["Age"].fillna(df["Age"].median())
 df["Salary"] = df["Salary"].fillna(df["Salary"].median())
@@ -21,7 +21,7 @@ df["Experience"] = df["Experience"].fillna(df["Experience"].median())
 df["Department"] = df["Department"].fillna(df["Department"].mode()[0])
 
 print("\nMissing values after cleaning:")
-print(df.isnull().sum())
+print(df.isna().sum())
 
 print("\nCleaned DataFrame:")
 print(df)

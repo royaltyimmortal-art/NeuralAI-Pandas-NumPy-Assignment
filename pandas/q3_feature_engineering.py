@@ -11,8 +11,8 @@ df = pd.DataFrame(data)
 
 subjects = ["Math", "Science", "English"]
 
-df["Average"] = df[subjects].mean(axis=1)
 df["Total"] = df[subjects].sum(axis=1)
+df["Average"] = df["Total"] / len(subjects)
 df["Passed"] = df["Average"] >= 60
 
 print("DataFrame with Average, Total and Passed columns:")
