@@ -9,25 +9,26 @@ data = {
 
 df = pd.DataFrame(data)
 
-subjects = ["Math", "Science", "English"]
-
-df["Total"] = df[subjects].sum(axis=1)
-df["Average"] = df["Total"] / len(subjects)
+# Parts 1, 2 and 3
+df["Average"] = df[["Math", "Science", "English"]].mean(axis=1)
+df["Total"] = df[["Math", "Science", "English"]].sum(axis=1)
 df["Passed"] = df["Average"] >= 60
 
-print("DataFrame with Average, Total and Passed columns:")
-print(df)
-
-print("\nStudent with the highest average:")
+# Part 4
+print("Highest average student:")
 print(df.loc[df["Average"].idxmax()])
 
-print("\nStudents whose average is 80 or more:")
+# Part 5
+print("\nAverage greater than or equal to 80:")
 print(df[df["Average"] >= 80])
 
-print("\nStudents sorted by average in descending order:")
-print(df.sort_values(by="Average", ascending=False))
+# Part 6
+print("\nSorted by Average:")
+print(df.sort_values("Average", ascending=False))
 
+# Part 7
 print("\nOverall average:", df["Average"].mean())
 
+# Part 8
 print("\nName, Average and Passed:")
 print(df[["Name", "Average", "Passed"]])

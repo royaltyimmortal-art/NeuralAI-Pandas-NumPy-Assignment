@@ -9,25 +9,28 @@ data = {
 
 df = pd.DataFrame(data)
 
+# Part 1
 print("First 3 rows:")
 print(df.head(3))
 
+# Part 2
 print("\nLast 2 rows:")
 print(df.tail(2))
 
+# Parts 3, 4 and 5
 print("\nShape:", df.shape)
-
-print("\nColumn names:")
-print(df.columns.tolist())
-
+print("Columns:", df.columns.tolist())
 print("\nData types:")
 print(df.dtypes)
 
-print("\nName and Marks columns:")
+# Part 6
+print("\nName and Marks:")
 print(df[["Name", "Marks"]])
 
-print("\nStudents whose marks are greater than 80:")
+# Part 7
+print("\nMarks greater than 80:")
 print(df[df["Marks"] > 80])
 
-print("\nStudents sorted by marks from highest to lowest:")
-print(df.sort_values(by="Marks", ascending=False))
+# Part 8
+print("\nSorted by Marks:")
+print(df.sort_values("Marks", ascending=False))
